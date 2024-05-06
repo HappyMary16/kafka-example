@@ -68,7 +68,7 @@ public class StatisticService {
     private StatisticDb getStatisticForParking(String parkingName) {
         if (!statisticRepository.existsById(parkingName)) {
             StatisticDb emptyStatistic = StatisticDb.builder()
-                                                    .parkingName(parkingName)
+                                                    .catsCafeName(parkingName)
                                                     .currentCatsCount(0)
                                                     .build();
 

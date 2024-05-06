@@ -11,11 +11,14 @@ import org.springframework.stereotype.Component;
  * Consumes all events that are sent to topic
  * specified in property "cats-cafe.kafka.topic.cats"
  */
-@RequiredArgsConstructor
 @Component
 public class CatEventsConsumer {
 
     private final StatisticService statisticService;
+
+    public CatEventsConsumer(StatisticService statisticService) {
+        this.statisticService = statisticService;
+    }
 
     @KafkaListener(topics = "${cats-cafe.kafka.topic.cats}")
     public void carEventListener(CatEvent carEvent) {

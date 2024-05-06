@@ -13,11 +13,14 @@ import org.springframework.stereotype.Component;
  * Sends {@link CatEvent}s to topic
  * specified in property "cats-cafe.kafka.topic.cats"
  */
-@RequiredArgsConstructor
 @Component
 public class CatEventProducer {
 
     private final KafkaTemplate<String, CatEvent> catKafkaTemplate;
+
+    public CatEventProducer(KafkaTemplate<String, CatEvent> catKafkaTemplate) {
+        this.catKafkaTemplate = catKafkaTemplate;
+    }
 
     @Value("${cats-cafe.kafka.topic.cats}")
     private String catsTopic;
